@@ -1,0 +1,168 @@
+<ion-content>
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="success">
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-label>Slide me both ways!</ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="primary">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Item with avatar -->
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="success">
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://picsum.photos/300/200" />
+      </ion-avatar>
+      <ion-label>
+        Avatar Item
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="primary">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Item with thumbnail -->
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="success">
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://picsum.photos/300/200" />
+      </ion-thumbnail>
+      <ion-label>
+        Thumbnail Item
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="primary">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Item with icon -->
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="success">
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-icon name="heart" slot="start"></ion-icon>
+      <ion-label>
+        Icon Item
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="primary">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-content>
+
+<ion-modal id="half-sheet-modal" enter-animation="modalEnterAnimation" leave-animation="modalLeaveAnimation">
+  <ion-content>
+    <!-- Modal content here -->
+  </ion-content>
+</ion-modal>
+
+<script>
+  async function modalEnterAnimation(baseEl) {
+    const backdropAnimation = baseEl.querySelector('ion-backdrop').animate(
+      [
+        { opacity: 0.01 },
+        { opacity: 0.4 }
+      ],
+      {
+        duration: 300,
+        easing: 'ease-in-out'
+      }
+    );
+
+    const wrapperAnimation = baseEl.querySelector('.modal-wrapper').animate(
+      [
+        { transform: 'translateY(100%)' },
+        { transform: 'translateY(50%)' }
+      ],
+      {
+        duration: 300,
+        easing: 'ease-in-out'
+      }
+    );
+
+    await Promise.all([backdropAnimation.finished, wrapperAnimation.finished]);
+  }
+
+  async function modalLeaveAnimation(baseEl) {
+    const backdropAnimation = baseEl.querySelector('ion-backdrop').animate(
+      [
+        { opacity: 0.4 },
+        { opacity: 0.01 }
+      ],
+      {
+        duration: 300,
+        easing: 'ease-in-out'
+      }
+    );
+
+    const wrapperAnimation = baseEl.querySelector('.modal-wrapper').animate(
+      [
+        { transform: 'translateY(50%)' },
+        { transform: 'translateY(100%)' }
+      ],
+      {
+        duration: 300,
+        easing: 'ease-in-out'
+      }
+    );
+
+    await Promise.all([backdropAnimation.finished, wrapperAnimation.finished]);
+  }
+</script>
+
+<style>
+  ion-modal.half-sheet {
+    --height: 50%;
+    --border-radius: 16px 16px 0 0;
+  }
+</style>

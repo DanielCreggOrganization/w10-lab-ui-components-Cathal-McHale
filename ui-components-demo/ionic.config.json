@@ -1,0 +1,7 @@
+{
+  "name": "ui-components-demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

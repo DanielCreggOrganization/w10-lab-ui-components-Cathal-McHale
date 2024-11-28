@@ -1,0 +1,10 @@
+
+ion-tab-button {
+    --color-selected: #ff4081;
+    
+    &.tab-selected {
+      ion-icon {
+        transform: scale(1.1);
+      }
+    }
+  }

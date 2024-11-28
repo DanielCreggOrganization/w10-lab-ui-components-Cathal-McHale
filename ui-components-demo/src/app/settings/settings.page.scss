@@ -1,0 +1,19 @@
+ion-tab-button {
+    &.tab-selected {
+      ion-icon {
+        transition: all 0.3s ease;
+        transform: rotate(360deg) scale(1.1);
+      }
+    }
+  }
+
+  ion-tab-button {
+    --color: #666666;              // Unselected state
+    --color-selected: #ff4081;     // Selected state
+    
+    &.tab-selected {
+      ion-icon {
+        color: var(--color-selected);
+      }
+    }
+  }
